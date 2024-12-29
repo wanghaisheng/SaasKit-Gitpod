@@ -9,7 +9,7 @@ import {
 } from '$env/static/public';
 import { createServerClient } from '@supabase/ssr';
 import { createClient } from '@supabase/supabase-js';
-import type { Handle } from '@sveltejs/kit';
+import type { Handle, HandleServerError } from '@sveltejs/kit';
 import Stripe from 'stripe';
 
 export const handle: Handle = async ({ event, resolve }) => {
@@ -88,4 +88,9 @@ export const handle: Handle = async ({ event, resolve }) => {
 			return name === 'content-range' || name === 'x-supabase-api-version';
 		},
 	});
+};
+
+export const handleError: HandleServerError = ({ error, event }) => {
+  console.error('Global error handler:', error);
+  // You can also send the error to an external service like Sentry here
 };

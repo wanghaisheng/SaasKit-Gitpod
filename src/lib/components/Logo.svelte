@@ -4,7 +4,7 @@
 
 <div
 	role="img"
-	aria-label="SaaS Kit logo"
+	aria-label="MGMT.golf logo"
 	class={cn(
 		'aspect-square size-6',
 		'flex flex-col items-center justify-center',
@@ -14,6 +14,6 @@
 		'[&_*]:mt-[-2px] [&_*]:leading-[0.85]',
 	)}
 >
-	<span>sa</span>
-	<span>as</span>
+	<span>MG</span>
+	<span>GT</span>
 </div>
