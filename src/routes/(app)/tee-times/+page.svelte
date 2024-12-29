@@ -1,76 +1,47 @@
 <script lang="ts">
-	import { Button } from '$lib/components/ui/button';
+	import { onMount } from 'svelte';
+	import { supabase } from '$lib/supabaseClient';
+	import * as Card from '$lib/components/ui/card';
+
+	interface TeeTime {
+		id: number;
+		date: string;
+		time: string;
+		course: string;
+		maxPlayers: number;
+		notes: string;
+	}
+
+	let teeTimes: TeeTime[] = [];
+
+	onMount(async () => {
+		// Fetch tee times from database
+		const { data: teeTimesData, error: teeTimesError } = await supabase
+			.from('tee_times')
+			.select('*');
+
+		if (teeTimesError) {
+			console.error('Error fetching tee times:', teeTimesError);
+			return;
+		}
+
+		teeTimes = teeTimesData || [];
+	});
 </script>
 
 <div class="container mx-auto p-4">
-	<h1 class="text-3xl font-bold mb-4">Schedule Tee Time</h1>
-	<form class="space-y-4">
-		<div>
-			<label
-				for="date"
-				class="block text-sm font-medium leading-none peer-disabled:cursor-not-allowed"
-			>
-				Date
-			</label>
-			<input
-				type="date"
-				id="date"
-				class="w-full rounded-md border shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-			/>
-		</div>
-		<div>
-			<label
-				for="time"
-				class="block text-sm font-medium leading-none peer-disabled:cursor-not-allowed"
-			>
-				Time
-			</label>
-			<input
-				type="time"
-				id="time"
-				class="w-full rounded-md border shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-			/>
-		</div>
-		<div>
-			<label
-				for="maxPlayers"
-				class="block text-sm font-medium leading-none peer-disabled:cursor-not-allowed"
-			>
-				Max Players
-			</label>
-			<input
-				type="number"
-				id="maxPlayers"
-				class="w-full rounded-md border shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-			/>
-		</div>
-		<div>
-			<label
-				for="course"
-				class="block text-sm font-medium leading-none peer-disabled:cursor-not-allowed"
-			>
-				Course
-			</label>
-			<select
-				id="course"
-				class="w-full rounded-md border shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-			>
-				<option value="">Select a course</option>
-				<!-- Course options will be loaded here -->
-			</select>
-		</div>
-		<div>
-			<label
-				for="notes"
-				class="block text-sm font-medium leading-none peer-disabled:cursor-not-allowed"
-			>
-				Notes
-			</label>
-			<textarea
-				id="notes"
-				class="w-full rounded-md border shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-			></textarea>
-		</div>
-		<Button type="submit">Schedule Tee Time</Button>
-	</form>
+	<h1 class="mb-4 text-3xl font-bold">Manage Tee Times</h1>
+	<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+		{#each teeTimes as teeTime}
+			<a href="/(app)/tee-times/{teeTime.id}">
+				<Card.Root
+					class="mb-2 rounded-md border p-2 transition-colors hover:bg-gray-100"
+				>
+					<p>Date: {teeTime.date}</p>
+					<p>Time: {teeTime.time}</p>
+					<p>Course: {teeTime.course}</p>
+				</Card.Root>
+			</a>
+		{/each}
+	</div>
 </div>

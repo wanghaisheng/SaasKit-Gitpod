@@ -1,45 +1,68 @@
 <script lang="ts">
-  import { Button } from '$lib/components/ui/button'
-  import { Input } from '$lib/components/ui/input'
-  import { Label } from '$lib/components/ui/label'
-  import { onMount } from 'svelte';
+	import CardWithForm from '$lib/components/example/card-with-form.svelte';
+	import CardDemo from '$lib/components/example/card-demo.svelte';
+	import { onMount } from 'svelte';
+	import { supabase } from '$lib/supabaseClient';
+	import { Button } from '$lib/components/ui/button';
+	import { Input } from '$lib/components/ui/input';
+	import { Label } from '$lib/components/ui/label';
 
-  let map;
-  let mapboxgl;
+	interface Course {
+		id: number;
+		name: string;
+		address: string;
+		coordinates: string;
+	}
 
-  onMount(async () => {
-    mapboxgl = await import('mapbox-gl');
-    mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_API_KEY;
+	let courses: Course[] = [];
 
-    map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v12',
-      center: [-96, 37.8],
-      zoom: 3
-    });
-  });
+	onMount(async () => {
+		// Fetch courses from database
+		const { data: coursesData, error: coursesError } = await supabase
+			.from('courses')
+			.select('*');
+
+		if (coursesError) {
+			console.error('Error fetching courses:', coursesError);
+			return;
+		}
+
+		courses = coursesData || [];
+	});
 </script>
 
 <div class="container mx-auto p-4">
-  <h1 class="text-3xl font-bold mb-4">Manage Courses</h1>
-  <div class="grid grid-cols-2 gap-4">
-    <div>
-      <h2 class="text-xl font-semibold mb-2">Add New Course</h2>
-      <form class="space-y-4">
-        <div>
-          <Label for="courseName">Course Name</Label>
-          <Input type="text" id="courseName" />
-        </div>
-        <div>
-          <Label for="courseAddress">Address</Label>
-          <Input type="text" id="courseAddress" />
-        </div>
-        <Button type="submit">Add Course</Button>
-      </form>
-    </div>
-    <div>
-      <h2 class="text-xl font-semibold mb-2">Search Courses</h2>
-      <div id="map" style="height: 400px;"></div>
-    </div>
-  </div>
+	<h1 class="mb-4 text-3xl font-bold">Manage Courses</h1>
+	<div class="grid grid-cols-2 gap-4">
+		<div>
+			<h2 class="mb-2 text-xl font-semibold">Add Course</h2>
+			<CardWithForm>
+				<form class="space-y-4">
+					<div>
+						<Label for="name">Name</Label>
+						<Input type="text" id="name" />
+					</div>
+					<div>
+						<Label for="address">Address</Label>
+						<Input type="text" id="address" />
+					</div>
+					<div>
+						<Label for="coordinates">Coordinates</Label>
+						<Input type="text" id="coordinates" />
+					</div>
+					<Button type="submit">Add Course</Button>
+				</form>
+			</CardWithForm>
+		</div>
+		<div>
+			<h2 class="mb-2 text-xl font-semibold">Courses</h2>
+			{#each courses as course}
+				<CardDemo>
+					<p>Name: {course.name}</p>
+					<p>Address: {course.address}</p>
+					<p>Coordinates: {course.coordinates}</p>
+				</CardDemo>
+			{/each}
+		</div>
+	</div>
 </div>
