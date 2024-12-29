@@ -1,0 +1,31 @@
+name: Linting
+
+on: [push, pull_request]
+
+env:
+  PUBLIC_SUPABASE_URL: 'https://fake_test_url.supabase.co'
+  PUBLIC_SUPABASE_ANON_KEY: 'fake_anon_key'
+  PRIVATE_SUPABASE_SERVICE_ROLE: 'fake_service_role'
+  PRIVATE_STRIPE_SECRET_KEY: 'fake_stripe_api_key'
+  PRIVATE_NOTIFICATIONS_EMAIL: 'fake_notifications_email'
+  PRIVATE_SMTP_HOST: 'fake_smtp_host'
+  PRIVATE_SMTP_PORT: 'fake_smtp_port'
+  PRIVATE_SMTP_USER: 'fake_smtp_user'
+  PRIVATE_SMTP_PASSWORD: 'fake_smtp_pass'
+
+jobs:
+  build_and_test:
+    name: Linting and Typechecking
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: NPM install
+        run: npm install
+
+      - name: Linting
+        run: npm run lint
+
+      - name: Typechecking
+        run: npm run check

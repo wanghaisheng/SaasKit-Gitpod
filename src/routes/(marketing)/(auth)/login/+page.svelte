@@ -14,7 +14,11 @@
 	let { supabase } = data;
 
 	onMount(() => {
-		supabase.auth.onAuthStateChange((event: AuthChangeEvent) => {
+		supabase.auth.onAuthStateChange((event: AuthChangeEvent, session) => {
+			console.log('Auth state change:', event, session);
+            if (session) {
+                console.log('Session data:', session);
+            }
 			// Redirect to account after sucessful login
 			if (event == 'SIGNED_IN') {
 				// Delay needed because order of callback not guaranteed.

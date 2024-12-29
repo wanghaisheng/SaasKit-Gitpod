@@ -1,7 +1,5 @@
 {
-	"recommendations": [
-		"svelte.svelte-vscode",
-		"dbaeumer.vscode-eslint",
-		"vitest.explorer"
-	]
+  "recommendations": [
+    "denoland.vscode-deno"
+  ]
 }
