@@ -1,6 +1,7 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import Icons from 'unplugin-icons/vite';
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vitest/config';
+import path from 'path';
 
 export default defineConfig({
 	plugins: [
@@ -17,10 +18,10 @@ export default defineConfig({
 			},
 		}),
 	],
+  optimizeDeps: {
+    exclude: ['src/lib/components/docs'],
+  },
 	test: {
 		include: ['src/**/*.{test,spec}.{js,ts}'],
 	},
-	optimizeDeps: {
-		exclude: ['src/lib/components/example/*', 'src/routes/examples/*']
-	}
 });
