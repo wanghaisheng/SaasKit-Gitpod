@@ -1,14 +1,19 @@
 <script lang="ts">
-	import PlusCircled from "svelte-radix/PlusCircled.svelte";
-	import { AlbumArtwork, Menu, PodcastEmptyPlaceholder, Sidebar } from "./(components)/index.js";
-	import { playlists } from "./(data)/playlists.js";
-	import { listenNowAlbums, madeForYouAlbums } from "./(data)/albums.js";
-	import { Button } from "$lib/registry/new-york/ui/button/index.js";
-	import { Separator } from "$lib/registry/new-york/ui/separator/index.js";
-	import * as Tabs from "$lib/registry/new-york/ui/tabs/index.js";
-	import { ScrollArea } from "$lib/registry/new-york/ui/scroll-area/index.js";
-	import MusicLight from "$lib/img/examples/music-light.png?enhanced";
-	import MusicDark from "$lib/img/examples/music-dark.png?enhanced";
+	import PlusCircled from 'svelte-radix/PlusCircled.svelte';
+	import {
+		AlbumArtwork,
+		Menu,
+		PodcastEmptyPlaceholder,
+		Sidebar,
+	} from './(components)/index.js';
+	import { playlists } from './(data)/playlists.js';
+	import { listenNowAlbums, madeForYouAlbums } from './(data)/albums.js';
+	import { Button } from '$lib/components/ui/button/index.js';
+	import { Separator } from '$lib/components/ui/separator/index.js';
+	import * as Tabs from '$lib/components/ui/tabs/index.js';
+	import { ScrollArea } from '$lib/components/ui/scroll-area/index.js';
+	import MusicLight from '$lib/img/examples/music-light.png?enhanced';
+	import MusicDark from '$lib/img/examples/music-dark.png?enhanced';
 </script>
 
 <div class="md:hidden">
@@ -45,7 +50,7 @@
 										<h2 class="text-2xl font-semibold tracking-tight">
 											Listen Now
 										</h2>
-										<p class="text-muted-foreground text-sm">
+										<p class="text-sm text-muted-foreground">
 											Top picks for you. Updated daily.
 										</p>
 									</div>
@@ -70,7 +75,7 @@
 									<h2 class="text-2xl font-semibold tracking-tight">
 										Made for You
 									</h2>
-									<p class="text-muted-foreground text-sm">
+									<p class="text-sm text-muted-foreground">
 										Your personal playlists. Updated daily.
 									</p>
 								</div>
@@ -100,7 +105,7 @@
 										<h2 class="text-2xl font-semibold tracking-tight">
 											New Episodes
 										</h2>
-										<p class="text-muted-foreground text-sm">
+										<p class="text-sm text-muted-foreground">
 											Your favorite podcasts. Updated daily.
 										</p>
 									</div>

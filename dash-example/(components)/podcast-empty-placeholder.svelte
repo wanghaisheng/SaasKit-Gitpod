@@ -1,12 +1,16 @@
 <script lang="ts">
-	import * as Dialog from "$lib/registry/new-york/ui/dialog/index.js";
-	import { Button } from "$lib/registry/new-york/ui/button/index.js";
-	import { Input } from "$lib/registry/new-york/ui/input/index.js";
-	import { Label } from "$lib/registry/new-york/ui/label/index.js";
+	import * as Dialog from '$lib/components/ui/dialog/index.js';
+	import { Button } from '$lib/components/ui/button/index.js';
+	import { Input } from '$lib/components/ui/input/index.js';
+	import { Label } from '$lib/components/ui/label/index.js';
 </script>
 
-<div class="flex h-[450px] shrink-0 items-center justify-center rounded-md border border-dashed">
-	<div class="mx-auto flex max-w-[420px] flex-col items-center justify-center text-center">
+<div
+	class="flex h-[450px] shrink-0 items-center justify-center rounded-md border border-dashed"
+>
+	<div
+		class="mx-auto flex max-w-[420px] flex-col items-center justify-center text-center"
+	>
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			fill="none"
@@ -14,7 +18,7 @@
 			stroke-linecap="round"
 			stroke-linejoin="round"
 			stroke-width="2"
-			class="text-muted-foreground h-10 w-10"
+			class="h-10 w-10 text-muted-foreground"
 			viewBox="0 0 24 24"
 		>
 			<circle cx="12" cy="11" r="1" />
@@ -25,12 +29,14 @@
 		</svg>
 
 		<h3 class="mt-4 text-lg font-semibold">No episodes added</h3>
-		<p class="text-muted-foreground mb-4 mt-2 text-sm">
+		<p class="mb-4 mt-2 text-sm text-muted-foreground">
 			You have not added any podcasts. Add one below.
 		</p>
 		<Dialog.Root>
 			<Dialog.Trigger asChild let:builder>
-				<Button size="sm" builders={[builder]} class="relative">Add Podcast</Button>
+				<Button size="sm" builders={[builder]} class="relative"
+					>Add Podcast</Button
+				>
 			</Dialog.Trigger>
 			<Dialog.Content>
 				<Dialog.Header>

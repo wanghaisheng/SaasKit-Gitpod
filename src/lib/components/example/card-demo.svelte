@@ -1,22 +1,22 @@
 <script lang="ts">
-	import Bell from "svelte-radix/Bell.svelte";
-	import Check from "svelte-radix/Check.svelte";
-	import { Button } from "$lib/components/ui/button/index.js";
-	import * as Card from "$lib/components/ui/card/index.js";
-	import { Switch } from "$lib/components/ui/switch/index.js";
+	import Bell from '~icons/lucide/bell';
+	import Check from '~icons/lucide/check';
+	import { Button } from '$lib/components/ui/button/index.js';
+	import * as Card from '$lib/components/ui/card/index.js';
+	import { Switch } from '$lib/components/ui/switch/index.js';
 
 	const notifications = [
 		{
-			title: "Your call has been confirmed.",
-			description: "1 hour ago",
+			title: 'Your call has been confirmed.',
+			description: '1 hour ago',
 		},
 		{
-			title: "You have a new message!",
-			description: "1 hour ago",
+			title: 'You have a new message!',
+			description: '1 hour ago',
 		},
 		{
-			title: "Your subscription is expiring soon!",
-			description: "2 hours ago",
+			title: 'Your subscription is expiring soon!',
+			description: '2 hours ago',
 		},
 	];
 </script>
@@ -31,19 +31,23 @@
 			<Bell />
 			<div class="flex-1 space-y-1">
 				<p class="text-sm font-medium leading-none">Push Notifications</p>
-				<p class="text-muted-foreground text-sm">Send notifications to device.</p>
+				<p class="text-sm text-muted-foreground">
+					Send notifications to device.
+				</p>
 			</div>
 			<Switch />
 		</div>
 		<div>
 			{#each notifications as notification, idx (idx)}
-				<div class="mb-4 grid grid-cols-[25px_1fr] items-start pb-4 last:mb-0 last:pb-0">
+				<div
+					class="mb-4 grid grid-cols-[25px_1fr] items-start pb-4 last:mb-0 last:pb-0"
+				>
 					<span class="flex h-2 w-2 translate-y-1 rounded-full bg-sky-500" />
 					<div class="space-y-1">
 						<p class="text-sm font-medium leading-none">
 							{notification.title}
 						</p>
-						<p class="text-muted-foreground text-sm">
+						<p class="text-sm text-muted-foreground">
 							{notification.description}
 						</p>
 					</div>

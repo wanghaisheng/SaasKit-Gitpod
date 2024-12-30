@@ -11,7 +11,12 @@
 	onMount(async () => {
 		const {
 			data: { user: supabaseUser },
+			error,
 		} = await supabase.auth.getUser();
+		if (error) {
+			console.error('Error fetching user:', error);
+			return;
+		}
 		user = supabaseUser;
 
 		if (user) {
@@ -49,12 +54,27 @@
 		}
 	});
 
-	function handleScorecardUpload(event: Event) {
+	async function handleScorecardUpload(event: Event) {
 		const fileInput = event.target as HTMLInputElement;
 		if (fileInput.files && fileInput.files.length > 0) {
 			const file = fileInput.files[0];
 			console.log('Uploading file:', file);
-			// Implement file upload logic here
+
+			if (user && user.id) {
+				const { data, error } = await supabase.storage
+					.from('scorecards')
+					.upload(`${user.id}/${file.name}`, file, {
+						cacheControl: '3600',
+						upsert: false,
+					});
+
+				if (error) {
+					console.error('Error uploading file:', error);
+				} else {
+					console.log('File uploaded successfully:', data);
+					// Handle successful upload
+				}
+			}
 		}
 	}
 </script>

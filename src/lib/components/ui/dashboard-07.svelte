@@ -1,38 +1,41 @@
 <script lang="ts">
-	import ChevronLeft from "lucide-svelte/icons/chevron-left";
-	import House from "lucide-svelte/icons/house";
-	import ChartLine from "lucide-svelte/icons/chart-line";
-	import Package from "lucide-svelte/icons/package";
-	import Package2 from "lucide-svelte/icons/package-2";
-	import PanelLeft from "lucide-svelte/icons/panel-left";
-	import CirclePlus from "lucide-svelte/icons/circle-plus";
-	import Search from "lucide-svelte/icons/search";
-	import Settings from "lucide-svelte/icons/settings";
-	import ShoppingCart from "lucide-svelte/icons/shopping-cart";
-	import Upload from "lucide-svelte/icons/upload";
-	import UsersRound from "lucide-svelte/icons/users-round";
-
-	import { Badge } from "$lib/components/ui/badge/index.js";
-	import * as Breadcrumb from "$lib/components/ui/breadcrumb/index.js";
-	import { Button } from "$lib/components/ui/button/index.js";
-	import * as Card from "$lib/components/ui/card/index.js";
-	import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
-	import { Input } from "$lib/components/ui/input/index.js";
-	import { Label } from "$lib/components/ui/label/index.js";
-	import * as Select from "$lib/components/ui/select/index.js";
-	import * as Sheet from "$lib/components/ui/sheet/index.js";
-	import * as Table from "$lib/components/ui/table/index.js";
-	import { Textarea } from "$lib/components/ui/textarea/index.js";
-	import * as ToggleGroup from "$lib/components/ui/toggle-group/index.js";
-	import * as Tooltip from "$lib/components/ui/tooltip/index.js";
+	import {
+		ChevronLeft,
+		House,
+		ChartLine,
+		Package,
+		Package2,
+		PanelLeft,
+		CirclePlus,
+		Search,
+		Settings,
+		ShoppingCart,
+		Upload,
+		UsersRound,
+	} from 'lucide-svelte';
+	import { Badge } from '$lib/components/ui/badge/index.js';
+	import * as Breadcrumb from '$lib/components/ui/breadcrumb/index.js';
+	import { Button } from '$lib/components/ui/button/index.js';
+	import * as Card from '$lib/components/ui/card/index.js';
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
+	import { Input } from '$lib/components/ui/input/index.js';
+	import { Label } from '$lib/components/ui/label/index.js';
+	import * as Select from '$lib/components/ui/select/index.js';
+	import * as Sheet from '$lib/components/ui/sheet/index.js';
+	import * as Table from '$lib/components/ui/table/index.js';
+	import { Textarea } from '$lib/components/ui/textarea/index.js';
+	import * as ToggleGroup from '$lib/components/ui/toggle-group/index.js';
+	import * as Tooltip from '$lib/components/ui/tooltip/index.js';
 </script>
 
-<div class="bg-muted/40 flex min-h-screen w-full flex-col">
-	<aside class="bg-background fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r sm:flex">
+<div class="flex min-h-screen w-full flex-col bg-muted/40">
+	<aside
+		class="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex"
+	>
 		<nav class="flex flex-col items-center gap-4 px-2 py-4">
 			<a
 				href="##"
-				class="bg-primary text-primary-foreground group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full text-lg font-semibold md:h-8 md:w-8 md:text-base"
+				class="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
 			>
 				<Package2 class="h-4 w-4 transition-all group-hover:scale-110" />
 				<span class="sr-only">Acme Inc</span>
@@ -41,7 +44,7 @@
 				<Tooltip.Trigger asChild let:builder>
 					<a
 						href="##"
-						class="text-muted-foreground hover:text-foreground flex h-9 w-9 items-center justify-center rounded-lg transition-colors md:h-8 md:w-8"
+						class="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
 						use:builder.action
 						{...builder}
 					>
@@ -55,7 +58,7 @@
 				<Tooltip.Trigger asChild let:builder>
 					<a
 						href="##"
-						class="hover:text-foreground flex h-9 w-9 items-center justify-center rounded-lg transition-colors md:h-8 md:w-8"
+						class="flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:text-foreground md:h-8 md:w-8"
 						use:builder.action
 						{...builder}
 					>
@@ -69,7 +72,7 @@
 				<Tooltip.Trigger asChild let:builder>
 					<a
 						href="##"
-						class="bg-accent text-accent-foreground hover:text-foreground flex h-9 w-9 items-center justify-center rounded-lg transition-colors md:h-8 md:w-8"
+						class="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
 						use:builder.action
 						{...builder}
 					>
@@ -83,7 +86,7 @@
 				<Tooltip.Trigger asChild let:builder>
 					<a
 						href="##"
-						class="text-muted-foreground hover:text-foreground flex h-9 w-9 items-center justify-center rounded-lg transition-colors md:h-8 md:w-8"
+						class="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
 						use:builder.action
 						{...builder}
 					>
@@ -97,7 +100,7 @@
 				<Tooltip.Trigger asChild let:builder>
 					<a
 						href="##"
-						class="text-muted-foreground hover:text-foreground flex h-9 w-9 items-center justify-center rounded-lg transition-colors md:h-8 md:w-8"
+						class="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
 						use:builder.action
 						{...builder}
 					>
@@ -113,7 +116,7 @@
 				<Tooltip.Trigger asChild let:builder>
 					<a
 						href="##"
-						class="text-muted-foreground hover:text-foreground flex h-9 w-9 items-center justify-center rounded-lg transition-colors md:h-8 md:w-8"
+						class="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
 						use:builder.action
 						{...builder}
 					>
@@ -127,11 +130,16 @@
 	</aside>
 	<div class="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
 		<header
-			class="bg-background sticky top-0 z-30 flex h-14 items-center gap-4 border-b px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6"
+			class="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6"
 		>
 			<Sheet.Root>
 				<Sheet.Trigger asChild let:builder>
-					<Button builders={[builder]} size="icon" variant="outline" class="sm:hidden">
+					<Button
+						builders={[builder]}
+						size="icon"
+						variant="outline"
+						class="sm:hidden"
+					>
 						<PanelLeft class="h-5 w-5" />
 						<span class="sr-only">Toggle Menu</span>
 					</Button>
@@ -140,39 +148,39 @@
 					<nav class="grid gap-6 text-lg font-medium">
 						<a
 							href="##"
-							class="bg-primary text-primary-foreground group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full text-lg font-semibold md:text-base"
+							class="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
 						>
 							<Package2 class="h-5 w-5 transition-all group-hover:scale-110" />
 							<span class="sr-only">Acme Inc</span>
 						</a>
 						<a
 							href="##"
-							class="text-muted-foreground hover:text-foreground flex items-center gap-4 px-2.5"
+							class="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
 						>
 							<House class="h-5 w-5" />
 							Dashboard
 						</a>
 						<a
 							href="##"
-							class="text-muted-foreground hover:text-foreground flex items-center gap-4 px-2.5"
+							class="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
 						>
 							<ShoppingCart class="h-5 w-5" />
 							Orders
 						</a>
-						<a href="##" class="text-foreground flex items-center gap-4 px-2.5">
+						<a href="##" class="flex items-center gap-4 px-2.5 text-foreground">
 							<Package class="h-5 w-5" />
 							Products
 						</a>
 						<a
 							href="##"
-							class="text-muted-foreground hover:text-foreground flex items-center gap-4 px-2.5"
+							class="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
 						>
 							<UsersRound class="h-5 w-5" />
 							Customers
 						</a>
 						<a
 							href="##"
-							class="text-muted-foreground hover:text-foreground flex items-center gap-4 px-2.5"
+							class="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
 						>
 							<ChartLine class="h-5 w-5" />
 							Settings
@@ -196,11 +204,13 @@
 				</Breadcrumb.List>
 			</Breadcrumb.Root>
 			<div class="relative ml-auto flex-1 md:grow-0">
-				<Search class="text-muted-foreground absolute left-2.5 top-2.5 h-4 w-4" />
+				<Search
+					class="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground"
+				/>
 				<Input
 					type="search"
 					placeholder="Search..."
-					class="bg-background w-full rounded-lg pl-8 md:w-[200px] lg:w-[320px]"
+					class="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[320px]"
 				/>
 			</div>
 			<DropdownMenu.Root>
@@ -248,17 +258,18 @@
 						<Button size="sm">Save Product</Button>
 					</div>
 				</div>
-				<div class="grid gap-4 md:grid-cols-[1fr_250px] lg:grid-cols-3 lg:gap-8">
-					<div class="grid auto-rows-max items-start gap-4 lg:col-span-2 lg:gap-8">
-						<Card.Root
-							data-x-chunk-name="dashboard-07-chunk-0"
-							data-x-chunk-description="A card with a form to edit the product details"
-						>
+				<div
+					class="grid gap-4 md:grid-cols-[1fr_250px] lg:grid-cols-3 lg:gap-8"
+				>
+					<div
+						class="grid auto-rows-max items-start gap-4 lg:col-span-2 lg:gap-8"
+					>
+						<Card.Root>
 							<Card.Header>
 								<Card.Title>Product Details</Card.Title>
-								<Card.Description>
-									Lipsum dolor sit amet, consectetur adipiscing elit
-								</Card.Description>
+								<Card.Description
+									>Lipsum dolor sit amet, consectetur adipiscing elit</Card.Description
+								>
 							</Card.Header>
 							<Card.Content>
 								<div class="grid gap-6">
@@ -282,15 +293,12 @@
 								</div>
 							</Card.Content>
 						</Card.Root>
-						<Card.Root
-							data-x-chunk-name="dashboard-07-chunk-1"
-							data-x-chunk-description="A card with a form to edit the product stock and variants"
-						>
+						<Card.Root>
 							<Card.Header>
 								<Card.Title>Stock</Card.Title>
-								<Card.Description>
-									Lipsum dolor sit amet, consectetur adipiscing elit
-								</Card.Description>
+								<Card.Description
+									>Lipsum dolor sit amet, consectetur adipiscing elit</Card.Description
+								>
 							</Card.Header>
 							<Card.Content>
 								<Table.Root>
@@ -379,10 +387,7 @@
 								</Button>
 							</Card.Footer>
 						</Card.Root>
-						<Card.Root
-							data-x-chunk-name="dashboard-07-chunk-2"
-							data-x-chunk-description="A card with a form to edit the product category and subcategory"
-						>
+						<Card.Root>
 							<Card.Header>
 								<Card.Title>Product Category</Card.Title>
 							</Card.Header>
@@ -401,18 +406,12 @@
 												<Select.Item value="clothing" label="Clothing"
 													>Clothing</Select.Item
 												>
-												<Select.Item
-													value="electronics"
-													label="Electronics"
+												<Select.Item value="electronics" label="Electronics"
+													>Electronics</Select.Item
 												>
-													Electronics
-												</Select.Item>
-												<Select.Item
-													value="accessories"
-													label="Accessories"
+												<Select.Item value="accessories" label="Accessories"
+													>Accessories</Select.Item
 												>
-													Accessories
-												</Select.Item>
 											</Select.Content>
 										</Select.Root>
 									</div>
@@ -432,12 +431,9 @@
 												<Select.Item value="hoodies" label="Hoodies"
 													>Hoodies</Select.Item
 												>
-												<Select.Item
-													value="sweatshirts"
-													label="Sweatshirts"
+												<Select.Item value="sweatshirts" label="Sweatshirts"
+													>Sweatshirts</Select.Item
 												>
-													Sweatshirts
-												</Select.Item>
 											</Select.Content>
 										</Select.Root>
 									</div>
@@ -446,10 +442,7 @@
 						</Card.Root>
 					</div>
 					<div class="grid auto-rows-max items-start gap-4 lg:gap-8">
-						<Card.Root
-							data-x-chunk-name="dashboard-07-chunk-3"
-							data-x-chunk-description="A card with a form to edit the product status"
-						>
+						<Card.Root>
 							<Card.Header>
 								<Card.Title>Product Status</Card.Title>
 							</Card.Header>
@@ -477,16 +470,12 @@
 								</div>
 							</Card.Content>
 						</Card.Root>
-						<Card.Root
-							class="overflow-hidden"
-							data-x-chunk-name="dashboard-07-chunk-4"
-							data-x-chunk-description="A card with a form to upload product images"
-						>
+						<Card.Root class="overflow-hidden">
 							<Card.Header>
 								<Card.Title>Product Images</Card.Title>
-								<Card.Description>
-									Lipsum dolor sit amet, consectetur adipiscing elit
-								</Card.Description>
+								<Card.Description
+									>Lipsum dolor sit amet, consectetur adipiscing elit</Card.Description
+								>
 							</Card.Header>
 							<Card.Content>
 								<div class="grid gap-2">
@@ -519,22 +508,19 @@
 										<button
 											class="flex aspect-square w-full items-center justify-center rounded-md border border-dashed"
 										>
-											<Upload class="text-muted-foreground h-4 w-4" />
+											<Upload class="h-4 w-4 text-muted-foreground" />
 											<span class="sr-only">Upload</span>
 										</button>
 									</div>
 								</div>
 							</Card.Content>
 						</Card.Root>
-						<Card.Root
-							data-x-chunk-name="dashboard-07-chunk-5"
-							data-x-chunk-description="A card with a call to action to archive the product"
-						>
+						<Card.Root>
 							<Card.Header>
 								<Card.Title>Archive Product</Card.Title>
-								<Card.Description>
-									Lipsum dolor sit amet, consectetur adipiscing elit.
-								</Card.Description>
+								<Card.Description
+									>Lipsum dolor sit amet, consectetur adipiscing elit.</Card.Description
+								>
 							</Card.Header>
 							<Card.Content>
 								<div></div>

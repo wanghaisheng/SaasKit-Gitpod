@@ -1,30 +1,25 @@
 <script lang="ts">
-	import {
-		DropdownMenu as DropdownMenuPrimitive,
-		type WithoutChild,
-	} from 'bits-ui';
-	import Circle from 'lucide-svelte/icons/circle';
 	import { cn } from '$lib/utils.js';
+	import { Button as ButtonPrimitive } from 'bits-ui';
+	import { buttonVariants, type Events, type Props } from './index.js';
 
-	type $$Props = WithoutChild<DropdownMenuPrimitive.RadioItemProps>;
+	type $$Props = Props;
+	type $$Events = Events;
 
-	export let ref = null;
-	export let className = '';
-	export let children: (props: { checked: boolean }) => any = () => null;
+	let className: $$Props['class'] = undefined;
+	export let variant: $$Props['variant'] = 'default';
+	export let size: $$Props['size'] = 'default';
+	export let builders: $$Props['builders'] = [];
+	export { className as class };
 </script>
 
-<DropdownMenuPrimitive.RadioItem
-	bind:ref
-	class={cn(
-		'relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none data-[disabled]:pointer-events-none data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[disabled]:opacity-50',
-		className,
-	)}
+<ButtonPrimitive.Root
+	{builders}
+	class={cn(buttonVariants({ variant, size, className }))}
+	type="button"
 	{...$$restProps}
+	on:click
+	on:keydown
 >
-	<span class="absolute left-2 flex size-3.5 items-center justify-center">
-		{#if $checked}
-			<Circle class="size-2 fill-current" />
-		{/if}
-	</span>
-	{@html children({ checked: $checked })}
-</DropdownMenuPrimitive.RadioItem>
+	<slot />
+</ButtonPrimitive.Root>

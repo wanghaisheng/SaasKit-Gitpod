@@ -1,28 +1,28 @@
 <script lang="ts">
-	import PlusCircled from "svelte-radix/PlusCircled.svelte";
-	import type { Album } from "../(data)/albums.js";
-	import { playlists } from "../(data)/playlists.js";
-	import { cn } from "$lib/utils.js";
-	import * as ContextMenu from "$lib/registry/new-york/ui/context-menu/index.js";
+	import PlusCircled from 'svelte-radix/PlusCircled.svelte';
+	import type { Album } from '../(data)/albums.js';
+	import { playlists } from '../(data)/playlists.js';
+	import { cn } from '$lib/utils.js';
+	import * as ContextMenu from '$lib/components/ui/context-menu/index.js';
 
 	let className: string | undefined | null = undefined;
 	export let album: Album;
-	export let aspectRatio: "portrait" | "square" = "square";
+	export let aspectRatio: 'portrait' | 'square' = 'square';
 	export let width: number;
 	export let height: number;
 	export { className as class };
 </script>
 
-<div class={cn("space-y-3", className)} {...$$restProps}>
+<div class={cn('space-y-3', className)} {...$$restProps}>
 	<ContextMenu.Root>
 		<ContextMenu.Trigger>
 			<div class="overflow-hidden rounded-md">
 				<img
 					class={cn(
-						"h-auto w-auto object-cover transition-all hover:scale-105",
+						'h-auto w-auto object-cover transition-all hover:scale-105',
 						`w-[${width}px]`,
 						`h-[${height}px]`,
-						aspectRatio === "portrait" ? "aspect-[3/4]" : "aspect-square"
+						aspectRatio === 'portrait' ? 'aspect-[3/4]' : 'aspect-square',
 					)}
 					src={album.cover}
 					alt={album.name}
@@ -70,6 +70,6 @@
 	</ContextMenu.Root>
 	<div class="space-y-1 text-sm">
 		<h3 class="font-medium leading-none">{album.name}</h3>
-		<p class="text-muted-foreground text-xs">{album.artist}</p>
+		<p class="text-xs text-muted-foreground">{album.artist}</p>
 	</div>
 </div>

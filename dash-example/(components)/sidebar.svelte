@@ -1,15 +1,15 @@
 <script lang="ts">
-	import type { Playlist } from "../(data)/playlists.js";
-	import { cn } from "$lib/utils.js";
-	import { Button } from "$lib/registry/new-york/ui/button/index.js";
-	import { ScrollArea } from "$lib/registry/new-york/ui/scroll-area/index.js";
+	import type { Playlist } from '../(data)/playlists.js';
+	import { cn } from '$lib/utils.js';
+	import { Button } from '$lib/components/ui/button/index.js';
+	import { ScrollArea } from '$lib/components/ui/scroll-area/index.js';
 
 	let className: string | null | undefined = undefined;
 	export let playlists: Playlist[];
 	export { className as class };
 </script>
 
-<div class={cn("pb-12", className)}>
+<div class={cn('pb-12', className)}>
 	<div class="space-y-4 py-4">
 		<div class="px-3 py-2">
 			<h2 class="mb-2 px-4 text-lg font-semibold tracking-tight">Discover</h2>
@@ -160,7 +160,9 @@
 			</div>
 		</div>
 		<div class="py-2">
-			<h2 class="relative px-7 text-lg font-semibold tracking-tight">Playlists</h2>
+			<h2 class="relative px-7 text-lg font-semibold tracking-tight">
+				Playlists
+			</h2>
 			<ScrollArea class="h-[300px] px-1">
 				<div class="space-y-1 p-2">
 					{#each playlists as playlist}
