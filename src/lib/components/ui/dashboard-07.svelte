@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {
 		ChevronLeft,
-		House,
+		Home,
 		ChartLine,
 		Package,
 		Package2,
@@ -48,7 +48,7 @@
 						use:builder.action
 						{...builder}
 					>
-						<House class="h-5 w-5" />
+						<Home class="h-5 w-5" />
 						<span class="sr-only">Dashboard</span>
 					</a>
 				</Tooltip.Trigger>
@@ -157,7 +157,7 @@
 							href="##"
 							class="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
 						>
-							<House class="h-5 w-5" />
+							<Home class="h-5 w-5" />
 							Dashboard
 						</a>
 						<a
