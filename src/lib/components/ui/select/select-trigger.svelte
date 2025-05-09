@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Select as SelectPrimitive } from 'bits-ui';
-	import CaretSort from '~icons/lucide/caret-sort.svelte';
+	import ChevronsUpDown as  CaretSort from '~icons/lucide';
 	import { cn } from '$lib/utils.js';
 
 	type $$Props = SelectPrimitive.TriggerProps;
